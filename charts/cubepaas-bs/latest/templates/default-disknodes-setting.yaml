@@ -5,4 +5,4 @@ metadata:
     cubepaas.com/creator: linkcloud
   name: create-default-disk-labeled-nodes
   namespace: {{ .Release.Namespace }}
-value: {{ .Values.defaultSettings.createDefaultDiskLabeledNodes }}
+value: "{{ .Values.defaultSettings.createDefaultDiskLabeledNodes }}"

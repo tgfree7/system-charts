@@ -5,4 +5,4 @@ metadata:
     cubepaas.com/creator: linkcloud
   name: replica-soft-anti-affinity
   namespace: {{ .Release.Namespace }}
-value: {{ .Values.defaultSettings.replicaSoftAntiAffinity }}
+value: "{{ .Values.defaultSettings.replicaSoftAntiAffinity }}"
