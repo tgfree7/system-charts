@@ -5,4 +5,4 @@ metadata:
     cubepaas.com/creator: linkcloud
   name: guaranteed-engine-cpu
   namespace: {{ .Release.Namespace }}
-value: {{ .Values.defaultSettings.guaranteedEngineCPU }}
+value: "{{ .Values.defaultSettings.guaranteedEngineCPU }}"

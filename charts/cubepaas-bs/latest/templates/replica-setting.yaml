@@ -5,4 +5,4 @@ metadata:
     cubepaas.com/creator: linkcloud
   name: default-replica-count
   namespace: {{ .Release.Namespace }}
-value: {{ .Values.defaultSettings.defaultReplicaCount }}
+value: "{{ .Values.defaultSettings.defaultReplicaCount }}"

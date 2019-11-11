@@ -5,4 +5,4 @@ metadata:
     cubepaas.com/creator: linkcloud
   name: storage-minimal-available-percentage
   namespace: {{ .Release.Namespace }}
-value: {{ .Values.defaultSettings.storageMinimalAvailablePercentage }}
+value: "{{ .Values.defaultSettings.storageMinimalAvailablePercentage }}"
