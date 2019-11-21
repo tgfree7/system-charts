@@ -82,7 +82,7 @@ spec:
         - name: DEFAULT_SETTING_PATH
           value: /var/lib/bs/setting/default-setting.yaml
       volumes:
-            - name: etc
+      - name: etc
         hostPath:
           path: /etc/
       - name: iscsiusr
