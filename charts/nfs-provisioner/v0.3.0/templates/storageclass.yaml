@@ -11,6 +11,9 @@ metadata:
 {{- if .Values.storageClass.defaultClass }}
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
+{{- else }}
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
 {{- end }}
 provisioner: {{ template "nfs-provisioner.provisionerName" . }}
 reclaimPolicy: {{ .Values.storageClass.reclaimPolicy }}
