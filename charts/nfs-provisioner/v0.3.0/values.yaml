@@ -7,9 +7,10 @@ replicaCount: 1
 # imagePullSecrets:
 
 image:
-  # repository: quay.io/kubernetes_incubator/nfs-provisioner
-  repository: ranchercharts/kubernetes_incubator-nfs-provisioner
-  tag: v2.2.1-k8s1.12
+  repository: quay.io/kubernetes_incubator/nfs-provisioner
+#  repository: ranchercharts/kubernetes_incubator-nfs-provisioner
+#  tag: v2.2.1-k8s1.12
+  tag: v1.0.9
   pullPolicy: IfNotPresent
 
 service:
@@ -34,10 +35,9 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  # storageClass: "-"
-
+  storageClass: "-"
   accessMode: ReadWriteOnce
-  size: 1Gi
+  size: 64Gi
   hostPath: /srv
 
 ## For creating the StorageClass automatically:
