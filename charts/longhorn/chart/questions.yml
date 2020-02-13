@@ -2,7 +2,7 @@ categories:
 - storage
 labels:
   io.rancher.certified: experimental
-namespace: cubepaas-bs
+namespace: longhorn-system
 questions:
 - variable: csi.attacherImage
   default:
