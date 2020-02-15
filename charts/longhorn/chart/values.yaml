@@ -6,7 +6,7 @@ image:
     engine: longhornio/longhorn-engine
     engineTag: v0.7.0
     manager: registry.cn-hangzhou.aliyuncs.com/link-cloud/longhorn-manager
-    managerTag: v0.7.0
+    managerTag: test
     ui: longhornio/longhorn-ui
     uiTag: v0.7.0
   pullPolicy: IfNotPresent
