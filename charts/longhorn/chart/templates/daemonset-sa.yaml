@@ -61,7 +61,7 @@ spec:
         - name: LONGHORN_BACKEND_SVC
           value: longhorn-backend
         - name: DEFAULT_SETTING_PATH
-          value: /var/lib/longhorn/setting/default-setting.yaml
+          value: /var/lib/bs/setting/default-setting.yaml
       volumes:
       - name: dev
         hostPath:
