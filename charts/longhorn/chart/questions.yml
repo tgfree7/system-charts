@@ -2,7 +2,7 @@ categories:
 - storage
 labels:
   io.rancher.certified: experimental
-namespace: longhorn-system
+namespace: cubepaas-bs
 questions:
 - variable: csi.attacherImage
   default:
@@ -83,7 +83,7 @@ questions:
   description: 'Default path to use for storing data on a host. By default "/var/lib/rancher/longhorn/"'
   group: "Longhorn Default Settings"
   type: string
-  default: "/var/lib/rancher/longhorn/"
+  default: "/var/lib/cubepaas/bs/"
 - variable: defaultSettings.replicaSoftAntiAffinity
   label: Replica Soft Anti-Affinity
   description: 'Allow scheduling on nodes with existing healthy replicas of the same volume. By default true.'
@@ -130,7 +130,7 @@ questions:
   description: "The 'storageClassName' is for PV/PVC when creating PV/PVC for an existing Longhorn volume. Notice that it's unnecessary for users create the related StorageClass object in Kubernetes since the StorageClass would only be used as matching labels for PVC bounding purpose. By default 'longhorn-static'."
   group: "Longhorn Default Settings"
   type: string
-  default: "longhorn-static"
+  default: "storagebs"
 - variable: defaultSettings.backupstorePollInterval
   label: Backupstore Poll Interval
   description: "In seconds. The interval to poll the backup store for updating volumes' Last Backup field. By default 300."
