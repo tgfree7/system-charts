@@ -1,6 +1,4 @@
-# Rancher Longhorn Chart
-
-Please install Longhorn chart in `longhorn-system` namespace only.
+Please install Storagebs chart in `cubepaas-bs` namespace only.
 
 The following document pertains to running Longhorn from the Rancher 2.0 chart.
 

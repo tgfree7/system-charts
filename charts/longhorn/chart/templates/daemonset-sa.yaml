@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: storagebs-manager
-        image: "{{ .Values.image.longhorn.manager }}:{{ .Values.image.longhorn.managerTag }}"
+        image: "{{ .Values.image.cubepaas.manager }}:{{ .Values.image.cubepaas.managerTag }}"
         imagePullPolicy: Always
         securityContext:
           privileged: true
@@ -25,14 +25,21 @@ spec:
         - -d
         - daemon
         - --engine-image
-        - "{{ .Values.image.longhorn.engine }}:{{ .Values.image.longhorn.engineTag }}"
+        - "{{ .Values.image.cubepaas.engine }}:{{ .Values.image.cubepaas.engineTag }}"
         - --manager-image
-        - "{{ .Values.image.longhorn.manager }}:{{ .Values.image.longhorn.managerTag }}"
+        - "{{ .Values.image.cubepaas.manager }}:{{ .Values.image.cubepaas.managerTag }}"
         - --service-account
-        - longhorn-service-account
+        - storagebs-service-account
         ports:
         - containerPort: 9500
           name: manager
+        resources:
+          limits:
+            cpu: {{ .Values.resources.manager.limits.cpu }}
+            memory: {{ .Values.resources.manager.limits.memory }}
+          requests:
+            cpu: {{ .Values.resources.manager.requests.cpu }}
+            memory: {{ .Values.resources.manager.requests.cpu }}
         volumeMounts:
         - name: dev
           mountPath: /host/dev/
@@ -43,7 +50,7 @@ spec:
         - name: cubepaas
           mountPath: /var/lib/cubepaas/bs/
           mountPropagation: Bidirectional
-        - name: longhorn-default-setting
+        - name: cubepaas-default-setting
           mountPath: /var/lib/bs/setting/
         env:
         - name: POD_NAMESPACE
@@ -58,8 +65,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-        - name: LONGHORN_BACKEND_SVC
-          value: longhorn-backend
+        - name: CUBEPAAS_BACKEND_SVC
+          value: storagebs-backend
         - name: DEFAULT_SETTING_PATH
           value: /var/lib/bs/setting/default-setting.yaml
       volumes:
@@ -75,17 +82,17 @@ spec:
       - name: cubepaas
         hostPath:
           path: /var/lib/cubepaas/bs/
-      - name: longhorn-default-setting
+      - name: cubepaas-default-setting
         configMap:
-          name: longhorn-default-setting
-      serviceAccountName: longhorn-service-account
+          name: cubepaas-default-setting
+      serviceAccountName: storagebs-service-account
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     app: storagebs-manager
-  name: longhorn-backend
+  name: storagebs-backend
   namespace: {{ .Release.Namespace }}
 spec:
   type: {{ .Values.service.manager.type }}

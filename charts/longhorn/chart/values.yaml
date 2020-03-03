@@ -1,12 +1,12 @@
-# Default values for longhorn.
+# Default values for cubepaasBS.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 image:
-  longhorn:
+  cubepaas:
     engine: longhornio/longhorn-engine
     engineTag: v0.7.0
     manager: registry.cn-hangzhou.aliyuncs.com/link-cloud/longhorn-manager
-    managerTag: test
+    managerTag: v0.7.0
     ui: longhornio/longhorn-ui
     uiTag: v0.7.0
   pullPolicy: IfNotPresent
@@ -20,7 +20,7 @@ service:
     nodePort: ""
 
 persistence:
-  defaultClass: true
+  defaultClass: false
   defaultClassReplicaCount: 3
 
 csi:
@@ -39,14 +39,21 @@ defaultSettings:
   replicaSoftAntiAffinity:
   storageOverProvisioningPercentage:
   storageMinimalAvailablePercentage:
-  upgradeChecker:
+  upgradeChecker: false
   defaultReplicaCount:
   guaranteedEngineCPU:
-  defaultLonghornStaticStorageClass:
+  defaultLonghornStaticStorageClass: storagebs
   backupstorePollInterval:
   taintToleration:
 
-resources: {}
+resources: 
+  manager:
+    limits:
+     cpu: 100m
+     memory: 128Mi
+    requests:
+     cpu: 100m
+     memory: 128Mi
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
