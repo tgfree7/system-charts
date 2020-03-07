@@ -83,7 +83,7 @@ spec:
 
 {{- if not .Values.persistence.enabled }}
       volumes:
-        - name: data
+        - name: {{ .Values.persistence.storageClass }}
           hostPath:
             path: {{ .Values.persistence.hostPath }}
 {{- end }}
@@ -91,7 +91,7 @@ spec:
 {{- if .Values.persistence.enabled }}
   volumeClaimTemplates:
     - metadata:
-        name: data
+        name: {{ .Values.persistence.storageClass }}
       spec:
         accessModes: [ {{ .Values.persistence.accessMode | quote }} ]
       {{- if .Values.persistence.storageClass }}
