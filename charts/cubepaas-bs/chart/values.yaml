@@ -33,7 +33,7 @@ csi:
 
 defaultSettings:
   backupTarget:
-  backupTargetCredentialSecret:
+  backupTargetCredentialSecret: cubepaas-bs-credential
   createDefaultDiskLabeledNodes:
   defaultDataPath:
   replicaSoftAntiAffinity:
@@ -65,7 +65,10 @@ resources:
   #  cpu: 100m
   #  memory: 128Mi
   #
-
+awsSecret:
+  accessKey:
+  secretKey:
+  endPoints:
 ingress:
   ## Set to true to enable ingress record generation
   enabled: false
