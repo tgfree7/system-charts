@@ -23,7 +23,7 @@ spec:
         heritage: {{ .Release.Service }}
         release: {{ .Release.Name }}
     spec:
-    {{- if . Values.hostNetwork.create }}
+    {{- if .Values.hostNetwork.create }}
       hostNetwork: true
     {{- end }}
       # NOTE: This is 10 seconds longer than the default nfs-provisioner --grace-period value of 90sec
