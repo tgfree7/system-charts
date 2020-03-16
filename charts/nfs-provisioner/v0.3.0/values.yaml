@@ -83,7 +83,8 @@ resources: {}
   # requests:
   #  cpu: 100m
   #  memory: 128Mi
-
+hostNetwork:
+  create: false
 nodeSelector: {}
 
 tolerations: []

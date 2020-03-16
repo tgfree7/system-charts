@@ -1,3 +1,4 @@
+{{ if . Values.hostNetwork.create -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -45,3 +46,4 @@ spec:
   selector:
     app: {{ template "nfs-provisioner.name" . }}
     release: {{ .Release.Name }}
+{{- end }}

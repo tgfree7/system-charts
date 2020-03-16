@@ -23,6 +23,9 @@ spec:
         heritage: {{ .Release.Service }}
         release: {{ .Release.Name }}
     spec:
+    {{- if . Values.hostNetwork.create }}
+      hostNetwork: true
+    {{- end }}
       # NOTE: This is 10 seconds longer than the default nfs-provisioner --grace-period value of 90sec
       terminationGracePeriodSeconds: 100
       serviceAccountName: {{ if .Values.rbac.create }}{{ template "nfs-provisioner.fullname" . }}{{ else }}{{ .Values.rbac.serviceAccountName | quote }}{{ end }}
@@ -83,7 +86,7 @@ spec:
 
 {{- if not .Values.persistence.enabled }}
       volumes:
-        - name: {{ .Values.persistence.storageClass }}
+        - name: data
           hostPath:
             path: {{ .Values.persistence.hostPath }}
 {{- end }}
@@ -91,7 +94,7 @@ spec:
 {{- if .Values.persistence.enabled }}
   volumeClaimTemplates:
     - metadata:
-        name: {{ .Values.persistence.storageClass }}
+        name: data
       spec:
         accessModes: [ {{ .Values.persistence.accessMode | quote }} ]
       {{- if .Values.persistence.storageClass }}
