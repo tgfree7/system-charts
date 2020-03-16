@@ -1,4 +1,4 @@
-{{ if .Values.hostNetwork.create -}}
+{{ if not .Values.hostNetwork.create -}}
 apiVersion: v1
 kind: Service
 metadata:
