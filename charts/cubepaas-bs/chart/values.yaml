@@ -40,7 +40,7 @@ defaultSettings:
   defaultLonghornStaticStorageClass: storagebs
   backupstorePollInterval:
   taintToleration:
-  interfaceName:
+  interfaceName: docker0
 
 resources: 
   manager:
