@@ -2,7 +2,7 @@ categories:
 - storage
 labels:
   io.rancher.certified: experimental
-namespace: longhorn-system
+namespace: cubepaas-bs
 questions:
 - variable: csi.attacherImage
   default:
@@ -83,7 +83,7 @@ questions:
   description: 'Default path to use for storing data on a host. By default "/var/lib/rancher/longhorn/"'
   group: "Longhorn Default Settings"
   type: string
-  default: "/var/lib/rancher/longhorn/"
+  default: "/var/lib/cubepaas/bs/"
 - variable: defaultSettings.replicaSoftAntiAffinity
   label: Replica Soft Anti-Affinity
   description: 'Allow scheduling on nodes with existing healthy replicas of the same volume. By default true.'

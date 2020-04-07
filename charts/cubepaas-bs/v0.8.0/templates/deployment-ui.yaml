@@ -17,13 +17,13 @@ spec:
     spec:
       containers:
       - name: longhorn-ui
-        image: "{{ .Values.image.longhorn.ui }}:{{ .Values.image.longhorn.uiTag }}"
+        image: "{{ .Values.image.storagebs.ui }}:{{ .Values.image.storagebs.uiTag }}"
         ports:
         - containerPort: 8000
           name: http
         env:
-          - name: LONGHORN_MANAGER_IP
-            value: "http://longhorn-backend:9500"
+          - name: CUBEPAAS_MANAGER_IP
+            value: "http://storagebs-backend:9500"
 ---
 kind: Service
 apiVersion: v1
