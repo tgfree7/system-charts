@@ -10,7 +10,7 @@ image:
     ui: longhornio/longhorn-ui
     uiTag: v0.8.0
     instanceManager: registry.cn-hangzhou.aliyuncs.com/link-cloud/storagebs-im
-    instanceManagerTag: v1_0407
+    instanceManagerTag: v0407
   pullPolicy: IfNotPresent
 
 service:
