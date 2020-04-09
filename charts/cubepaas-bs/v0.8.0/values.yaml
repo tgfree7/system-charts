@@ -9,8 +9,8 @@ image:
     managerTag: v0.8.0
     ui: longhornio/longhorn-ui
     uiTag: v0.8.0
-    instanceManager: registry.cn-hangzhou.aliyuncs.com/link-cloud/cubepaas-bs-instance-manager
-    instanceManagerTag: v1_20200407
+    instanceManager: registry.cn-hangzhou.aliyuncs.com/link-cloud/cubepaas-bs-im
+    instanceManagerTag: v1_200407
   pullPolicy: IfNotPresent
 
 service:
