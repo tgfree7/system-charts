@@ -14,6 +14,18 @@ spec:
       labels:
         app: storagebs-manager
     spec:
+      initContainers:
+      - name: install
+        image: registry.cn-hangzhou.aliyuncs.com/link-cloud/initcubepaas-bs:v0.6.0
+        imagePullPolicy: Always
+        command: ["/bin/sh","-c","/home/init.sh && ls /sbin/iscsi*"]
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: iscsiusr
+          mountPath: /sbin/
+        - name: etc
+          mountPath: /etc/ 
       containers:
       - name: storagebs-manager
         image: "{{ .Values.image.storagebs.manager }}:{{ .Values.image.storagebs.managerTag }}"
@@ -35,6 +47,13 @@ spec:
         ports:
         - containerPort: 9500
           name: manager
+        resources:
+          limits:
+            cpu: {{ .Values.resources.manager.limits.cpu }}
+            memory: {{ .Values.resources.manager.limits.memory }}
+          requests:
+            cpu: {{ .Values.resources.manager.requests.cpu }}
+            memory: {{ .Values.resources.manager.requests.cpu }}
         volumeMounts:
         - name: dev
           mountPath: /host/dev/
@@ -65,6 +84,12 @@ spec:
         - name: DEFAULT_SETTING_PATH
           value: /var/lib/cubepaas-setting/default-setting.yaml
       volumes:
+      - name: etc
+        hostPath:
+          path: /etc/
+      - name: iscsiusr
+        hostPath:
+          path: /sbin/
       - name: dev
         hostPath:
           path: /dev/
