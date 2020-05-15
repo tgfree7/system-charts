@@ -4,9 +4,9 @@
 image:
   storagebs:
     engine: registry.cn-hangzhou.aliyuncs.com/link-cloud/cubepaas-bs-engine
-    engineTag: v0.8.2
+    engineTag: v0.8.4
     manager: registry.cn-hangzhou.aliyuncs.com/link-cloud/cubepaas-bs-manager
-    managerTag: v0.8.1
+    managerTag: v0.8.4
     instanceManager: registry.cn-hangzhou.aliyuncs.com/link-cloud/storagebs-im
     instanceManagerTag: v0414
   pullPolicy: IfNotPresent
@@ -23,7 +23,8 @@ persistence:
 csi:
   attacherImage:
   provisionerImage:
-  driverRegistrarImage:
+  nodeDriverRegistrarImage:
+  resizerImage:
   kubeletRootDir:
   attacherReplicaCount:
   provisionerReplicaCount:
@@ -37,12 +38,19 @@ defaultSettings:
   storageOverProvisioningPercentage:
   storageMinimalAvailablePercentage:
   upgradeChecker: false
+  hostNetwork: true
   defaultReplicaCount:
   guaranteedEngineCPU:
   defaultLonghornStaticStorageClass: storagebs
   backupstorePollInterval:
   taintToleration:
   interfaceName: 
+  registrySecret:
+
+privateRegistry:
+  registryUrl:
+  registryUser:
+  registryPasswd:
 
 resources: 
   manager:

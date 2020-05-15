@@ -47,6 +47,9 @@ spec:
         ports:
         - containerPort: 9500
           name: manager
+        readinessProbe:
+          tcpSocket:
+            port: 9500
         resources:
           limits:
             cpu: {{ .Values.resources.manager.limits.cpu }}
@@ -79,8 +82,6 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-        - name: CUBEPAAS_BACKEND_SVC
-          value: storagebs-backend
         - name: DEFAULT_SETTING_PATH
           value: /var/lib/cubepaas-setting/default-setting.yaml
       volumes:
@@ -105,6 +106,10 @@ spec:
       - name: storagebs-default-setting
         configMap:
           name: storagebs-default-setting
+      {{- if .Values.defaultSettings.registrySecret }}
+      imagePullSecrets:
+      - name: {{ .Values.defaultSettings.registrySecret }}
+      {{- end }}
       serviceAccountName: storagebs-service-account
   updateStrategy:
     rollingUpdate:
