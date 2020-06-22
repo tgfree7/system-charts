@@ -64,11 +64,15 @@ spec:
           {{- end }}
           {{- if .Values.csi.attacherReplicaCount }}
           - name: CSI_ATTACHER_REPLICA_COUNT
-            value: "{{ .Values.csi.attacherReplicaCount }}"
+            value: "{{ .Values.csi.attacherReplicaCount | quote }}"
           {{- end }}
           {{- if .Values.csi.provisionerReplicaCount }}
           - name: CSI_PROVISIONER_REPLICA_COUNT
-            value: "{{ .Values.csi.provisionerReplicaCount }}"
+            value: "{{ .Values.csi.provisionerReplicaCount | quote }}"
+          {{- end }}
+          {{- if .Values.csi.resizerReplicaCount }}
+          - name: CSI_RESIZER_REPLICA_COUNT
+            value: {{ .Values.csi.resizerReplicaCount | quote }}
           {{- end }}
       {{- if .Values.defaultSettings.registrySecret }}
       imagePullSecrets:
@@ -82,3 +86,5 @@ spec:
               cpu: {{ .Values.resources.manager.requests.cpu }}
               memory: {{ .Values.resources.manager.requests.cpu }}
       serviceAccountName: storagebs-service-account
+      securityContext:
+        runAsUser: 0
