@@ -6,7 +6,7 @@ image:
     engine: registry.cn-hangzhou.aliyuncs.com/link-cloud/cubepaas-bs-engine
     engineTag: v1.0.1
     manager: registry.cn-hangzhou.aliyuncs.com/link-cloud/cubepaas-bs-manager
-    managerTag: v1.0.0
+    managerTag: v1.0.1
     ui: longhornio/longhorn-ui
     uiTag: v1.0.0
     instanceManager: registry.cn-hangzhou.aliyuncs.com/link-cloud/storagebs-im
