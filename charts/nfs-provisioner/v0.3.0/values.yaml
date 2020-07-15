@@ -59,8 +59,7 @@ storageClass:
   # set to null to prevent expansion
   allowVolumeExpansion: true
   ## StorageClass parameters
-  parameters:
-    fsType: xfs
+  parameters: {}
 
   mountOptions:
     - vers=4.1
