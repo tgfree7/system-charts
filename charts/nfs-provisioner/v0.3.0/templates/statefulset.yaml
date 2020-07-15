@@ -53,6 +53,7 @@ spec:
                 - SYS_RESOURCE
           args:
             - "-provisioner={{ template "nfs-provisioner.provisionerName" . }}"
+            - "-enable-xfs-quota=true"
           env:
             - name: POD_IP
               valueFrom:
