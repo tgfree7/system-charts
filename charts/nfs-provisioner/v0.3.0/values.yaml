@@ -64,8 +64,6 @@ storageClass:
   mountOptions:
     - vers=4.1
     - noatime
-    - pquota
-    - prjquota
 
   ## ReclaimPolicy field of the class, which can be either Delete or Retain
   reclaimPolicy: Delete
