@@ -59,11 +59,14 @@ storageClass:
   # set to null to prevent expansion
   allowVolumeExpansion: true
   ## StorageClass parameters
-  parameters: {}
+  parameters:
+    fsType: xfs
 
   mountOptions:
     - vers=4.1
     - noatime
+    - pquota
+    - prjquota
 
   ## ReclaimPolicy field of the class, which can be either Delete or Retain
   reclaimPolicy: Delete

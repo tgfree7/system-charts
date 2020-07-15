@@ -16,11 +16,6 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "false"
 {{- end }}
 provisioner: {{ template "nfs-provisioner.provisionerName" . }}
-mountOptions:
-  - pquota
-  - prjquota
-parameters:
-  fsType: xfs
 reclaimPolicy: {{ .Values.storageClass.reclaimPolicy }}
 {{ if .Values.storageClass.allowVolumeExpansion }}
 allowVolumeExpansion: {{ .Values.storageClass.allowVolumeExpansion }}
